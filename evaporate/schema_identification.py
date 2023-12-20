@@ -44,16 +44,16 @@ def directly_extract_from_chunks_w_value(
                 break
             prompt_template = SCHEMA_ID_PROMPTS[0]
             prompt = prompt_template.format(chunk=chunk, topic=topic)
-            try: 
-                result, num_toks = apply_prompt(
-                    Step(prompt), 
-                    max_toks=500, 
-                    manifest=manifest_session, 
-                    overwrite_cache=overwrite_cache
-                )
-            except:
-                print("Failed to apply prompt to chunk.")
-                continue
+            # try: 
+            result, num_toks = apply_prompt(
+                Step(prompt), 
+                max_toks=500, 
+                manifest=manifest_session, 
+                overwrite_cache=overwrite_cache
+            )
+            # except:
+            #     print("Failed to apply prompt to chunk.")
+            #     continue
             total_tokens_prompted  += num_toks
             result = result.split("---")[0].strip("\n")
             results = result.split("\n")

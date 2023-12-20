@@ -443,6 +443,10 @@ def get_experiment_args():
     return experiment
 
 
+# import os
+# os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
+# os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
+
 def main():
     experiment_args = get_experiment_args()
     profiler_args = {}
@@ -454,14 +458,14 @@ def main():
         'GOLD_KEY': "text-davinci-003",
     }
     # Example of how to use a locally-hosted FM
-    # model_dict = {
-    #     'MODELS': [" EleutherAI/gpt-j-6B"],
-    #     'EXTRACTION_MODELS': [" EleutherAI/gpt-j-6B"],
-    #     'GOLD_KEY': " EleutherAI/gpt-j-6B",
-    #     'MODEL2URL': {
-    #         " EleutherAI/gpt-j-6B": "http://127.0.0.1:5000"
-    #     },
-    # }
+    model_dict = {
+        'MODELS': [" EleutherAI/gpt-j-6B"],
+        'EXTRACTION_MODELS': [" EleutherAI/gpt-j-6B"],
+        'GOLD_KEY': " EleutherAI/gpt-j-6B",
+        'MODEL2URL': {
+            " EleutherAI/gpt-j-6B": "http://127.0.0.1:5000"
+        },
+    }
             
     for k, v in model_dict.items():
         setattr(profiler_args, k, v)
