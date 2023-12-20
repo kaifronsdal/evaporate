@@ -130,4 +130,7 @@ dmypy.json
 
 # Custom
 data/
+evaporate/data/
+evaporate/function_cache/
+evaporate/result_dumps/
 .sqlite.cache
